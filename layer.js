@@ -19,7 +19,6 @@ class Layer{
         ob.window =this.window;
         ob.canvasWidth = this.canvas.width;
         ob.canvasHeight =this.canvas.height;
-        
         this.object.add(ob);
 
     }

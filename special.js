@@ -18,10 +18,10 @@ class Special{
         this.y=null;//this.character.y - (this.resizey);
         this.type ="special";
         this.name= "";
-        this.layer=0;
+        this.layer;
         this.buffer=0;
         this.initiated=false;
-        
+        this.requested=false;
 
         this.frame=[];
         this.source= new Array();
@@ -38,11 +38,12 @@ class Special{
     }
 
     draw(  ){
-            
+            if(this.requested ==true){
             if(this.initiated == false){
                 this.x = this.character.x;
                 this.y = this.character.y - (this.resizey/2);
             }
+
             this.initiated=true;
             
             this.ctx.drawImage(this.frame[this.currframe], this.canvasWidth*this.x ,this.canvasHeight*this.y,this.canvasWidth*this.resizex,this.canvasHeight*this.resizey);
@@ -54,11 +55,14 @@ class Special{
 
             if(this.x*this.canvasWidth > this.canvasWidth){
                 this.initiated=false;
+                this.requested=false;
              }else{
                 this.x+=0.1;
                 this.initiated=true;
-             }            
-    }
+            }            
+            }
+        }
+
 }
 
 const fireball = new Special();

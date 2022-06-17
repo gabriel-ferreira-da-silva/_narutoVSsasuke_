@@ -31,9 +31,16 @@ valleyofend.ctx = scenario.ctx;
 
 
 
+
+
+
 scenario.add(valleyofend);
+sasuke.setgrounds(valleyofend.grounds);
 scenario.add(sasuke);
 sasuke.addspecial(fireball);
+//scenario.add(fireball);
+
+
 
 let fps, fpsInterval, startTime , now, then, elapsed;
 

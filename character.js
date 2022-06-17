@@ -15,16 +15,23 @@ class Character{
         //movimento e fisica
         this.x=0.4;
         this.y=0;
-        this.velFactor=0.05;
+        this.xvelFactor=0.05;
+        this.yvelFactor=0.05;
+        this.ygravity=0.04;
+        this.velbuffer=1;
+        this.gravitybuffer=0.04;
 
+        //***************** */
+        this.onground=0;
+        this.isjumping=false;
+        this.grounds=[];
+        //********************* */
         this.layer;
-
         this.special=null;
-
         this.state="idle";
-        
         this.keys =[];
         //sprites e imgaesn
+        
         this.maxframe=0;
         this.currframe=0;
         this.basesrc="";
@@ -32,6 +39,9 @@ class Character{
         this.CurrSprite="";
         this.framesdic = new Object();
         //outros
+
+        ///controle da sprite
+        this.lockstate="free";
 
         this.#setFrame();
     }
@@ -41,26 +51,62 @@ class Character{
         this.ctx.drawImage(this.frame,this.canvasWidth*this.x,this.canvasHeight*this.y,this.canvasWidth*0.1,this.canvasHeight*0.1);
     }
 
+    checkground(){
+        
+        this.onground=false;
+        for(let i=0; i <  this.grounds.length ; i++){
+            console.log(this.grounds);
+            if(this.x > this.grounds[i].startx && this.x < this.grounds[i].endx){
+                if(this.y > this.grounds[i].starty && this.y < this.grounds[i].endy){
+                    this.onground=true;
+                }
+            }
+        }
+    }
+
+
     getmove(){
         this.state ="idle";
-        if(this.keys['D']){
-            this.x+=this.velFactor;
-            this.state = "running";
-        }
-        if(this.keys['A']){
-            this.x-=this.velFactor;
-            this.state = "running-left";
-        }
-        if(this.keys['S']){
-            this.y+=this.velFactor;
-        }
-        if(this.keys['W']){
-            this.y-=this.velFactor;
+        this.checkground();
+        
+        if(this.onground==false){
+            this.y+=this.gravitybuffer;
         }
 
-        if(this.keys['J']){
-            this.state = "fireball-attack";
+        if(this.lockstate=="free"){
+            if(this.keys['D']){
+                this.x+=this.xvelFactor;
+                this.state = "running";
+            }
+            if(this.keys['A']){
+                this.x-=this.xvelFactor;
+                this.state = "running-left";
+            }
+            if(this.keys['S']){
+                this.y+=this.yvelFactor;        
+            }
+            if(this.keys['W']){
+                this.y-=this.yvelFactor;    
+            /*if(this.onground){
+                    this.state ="jumping";
+                    this.lockstate="jumping";
+                    this.velbuffer=3;
+                }*/
+                
+                
+            }
+            if(this.keys['F']){
+                this.state = "fireball-attack";
+            }
         }
+        
+
+        
+    }
+
+   
+    setgrounds(grounds){
+        this.grounds=grounds;
     }
 
     handleState(){
@@ -107,6 +153,8 @@ class Character{
             case "fireball-attack":
 
                 this.maxframe = 3;
+                this.special.requested=true;
+                
                 if(this.currframe > this.maxframe ||this.currframe < 1 ){
                     this.currframe=1;
                 }
@@ -119,12 +167,22 @@ class Character{
                 if(this.special.initiated == false){
                     this.special.x= this.x;
                     this.special.y= this.y;
-                    
+                    //this.special.initiated=true;
                     this.layer.object.add(this.special);
                 }
-                
-                
             break;
+            case "jumping":
+                this.handlejumping();
+                this.maxframe = 2;
+                if(this.currframe > this.maxframe ||this.currframe < 1 ){
+                    this.currframe=1;
+                }
+
+                this.CurrSprite ="Sprites/"+ this.basesrc +"/jumping/jumping" + this.currframe + ".png";
+                this.setFrame();
+                console.log(this.CurrSprite);
+                this.currframe++;
+                break;
             default:
                 this.state="idle";
                 break;
@@ -134,15 +192,26 @@ class Character{
         }
     }
 
-    addspecial(special){
-        this.special = special;
-        special.character=this;
-        special.ctx = this.ctx
-        special.canvasheight = this.canvasHeight;
-        special.canvaswidth = this.canvasWidth;
+    handlejumping(){
+        this.y-=this.yvelFactor*this.velbuffer;
+        this.velbuffer-=0.2;
+        if(this.velbuffer <1){
+            this.lockstate="free";
+        }
+        
     }
 
-
+    addspecial(special){
+        this.special = special;
+        this.special.character=this;
+        this.special.ctx = this.ctx
+        this.special.canvasHeight = this.canvasHeight;
+        this.special.canvaswidth = this.canvasWidth;
+        this.special.layer = this.layer;
+        this.layer.add(this.special);
+    }
+    
+    
     #setFrame(){
         const keys = this.keys;
         //let state = this.state;

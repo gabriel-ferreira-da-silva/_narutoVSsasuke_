@@ -1,3 +1,17 @@
+class Line{
+    constructor(startx,starty,endx,endy){
+        this.startx=startx;
+        this.starty=starty;
+        this.endx=endx;
+        this.endy=endy;
+    }
+}
+class Ground{
+    constructor(){
+        this.line=[];
+    }
+}
+
 class Background{
     constructor(  ){
         //variaveis universais
@@ -5,8 +19,12 @@ class Background{
         this.window=null;
         this.canvasWidth=null;
         this.canvasHeight=null;
+        
+        
+        //fisica e movimento
+        this.grounds= [];
 
-
+        /****** */
         this.maxframe=0;
         this.currframe=0;
         this.x=0;
@@ -18,6 +36,10 @@ class Background{
 
         this.frame=[];
         this.source= new Array();
+    }
+
+    setgrounds(grounds){
+        this.grounds=grounds;
     }
 
     setimages(sourcesarray){
@@ -95,12 +117,24 @@ class Background{
             }
         }
     }
-
-
 }
+
+
 
 
 const valleyofend = new Background();
 valleyofend.maxframe =2;
 const sourcesarray = new Array("sprites/waterfall1.png","sprites/waterfall2.png","sprites/waterfall3.png");
 valleyofend.setimages(sourcesarray);
+
+const line1 = new Line(-0.1 ,0.5 ,0.27 ,0.5+0.025 );
+const line2 = new Line(0.67 ,0.5 , 1.11 ,0.5+0.025 );
+const line3 = new Line(0.25 ,0.6 , 0.7 ,0.6 +0.05 );
+
+const grounds = [line1,line2,line3];
+/*grounds.push(line1);
+grounds.push(line2);
+grounds.push(line3);*/
+valleyofend.setgrounds(grounds);
+
+
