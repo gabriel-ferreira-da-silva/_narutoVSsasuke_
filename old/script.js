@@ -68,7 +68,7 @@ function animate(){
 }
 
 function start(){
-    startAnimating(10);    
+    startAnimating(60);    
 }
 
 start();

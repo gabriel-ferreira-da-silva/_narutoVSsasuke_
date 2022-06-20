@@ -129,7 +129,7 @@ valleyofend.setimages(sourcesarray);
 
 const line1 = new Line(-0.1 ,0.5 ,0.27 ,0.5+0.025 );
 const line2 = new Line(0.67 ,0.5 , 1.11 ,0.5+0.025 );
-const line3 = new Line(0.25 ,0.6 , 0.7 ,0.6 +0.05 );
+const line3 = new Line(0.25 ,0.6 , 0.7 ,0.6 +0.025 );
 
 const grounds = [line1,line2,line3];
 /*grounds.push(line1);

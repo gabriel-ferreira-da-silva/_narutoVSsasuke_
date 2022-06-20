@@ -1,7 +1,7 @@
 class Character{
     //constructor(ctx, window, canvasWidth, canvasHeight){
     constructor(){
-        //variaveis universais
+        // variaveis universais/..,,,???///???
         
         this.window=null;
         this.canvasWidth=null;
@@ -15,11 +15,13 @@ class Character{
         //movimento e fisica
         this.x=0.4;
         this.y=0;
-        this.xvelFactor=0.05;
-        this.yvelFactor=0.05;
-        this.ygravity=0.04;
+        this.xbuffer=0;
+        this.ybuffer=0;
+        this.xvelFactor=0.01;
+        this.yvelFactor=0.01;
+        this.ygravity=0.01;
         this.velbuffer=1;
-        this.gravitybuffer=0.04;
+        this.gravitybuffer=0.01;
 
         //***************** */
         this.onground=0;
@@ -57,7 +59,7 @@ class Character{
         for(let i=0; i <  this.grounds.length ; i++){
             console.log(this.grounds);
             if(this.x > this.grounds[i].startx && this.x < this.grounds[i].endx){
-                if(this.y > this.grounds[i].starty && this.y < this.grounds[i].endy){
+                if(this.y >= this.grounds[i].starty && this.y + this.yvelFactor >= this.grounds[i].endy && this.y < this.grounds[i].endy){
                     this.onground=true;
                 }
             }
@@ -66,14 +68,16 @@ class Character{
 
 
     getmove(){
-        this.state ="idle";
-        this.checkground();
         
-        if(this.onground==false){
-            this.y+=this.gravitybuffer;
-        }
 
         if(this.lockstate=="free"){
+            
+            this.state ="idle";
+            this.checkground();
+        
+            if(this.onground==false){
+                this.y+=this.gravitybuffer;
+            }
             if(this.keys['D']){
                 this.x+=this.xvelFactor;
                 this.state = "running";
@@ -86,14 +90,12 @@ class Character{
                 this.y+=this.yvelFactor;        
             }
             if(this.keys['W']){
-                this.y-=this.yvelFactor;    
-            /*if(this.onground){
+                if(this.onground){
                     this.state ="jumping";
                     this.lockstate="jumping";
-                    this.velbuffer=3;
-                }*/
-                
-                
+                    this.onground=false;
+                    this.ybuffer = this.y;
+                }
             }
             if(this.keys['F']){
                 this.state = "fireball-attack";
