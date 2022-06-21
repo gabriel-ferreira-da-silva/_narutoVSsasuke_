@@ -38,23 +38,6 @@ sasuke.addspecial(fireball);
 //scenario.add(fireball);
 */
 
-
-let fps, fpsInterval, startTime , now, then, elapsed;
-
-function startAnimating(fps){
-    
-    fpsInterval=1000/fps;
-    then= Date.now();
-    startTime=then;
-    animate();
-
-}
-let count=0;
-/*
-const sprite = new Image();
-sprite.src = "/home/gabriel/Desktop/projetos/naruto_GAME/_narutoVSsasuke_/_narutoVSsasuke_/old/Sprites/sasuke/idle";
-*/
-
 const sprite = new Image();
 sprite.src = "idle1.png";
 
@@ -65,24 +48,56 @@ sasuke.src = "idle1.png";
 sasuke.resizex= 0.3;
 sasuke.resizey= 0.5;
 
+const naruto = new drawableObj();
+naruto.setctx(ctx);
+naruto.setcanvas(canvas);
+naruto.src = "idle2.png";
+naruto.posx = 0.4;
+naruto.posy = 0.4;
+naruto.resizex= 0.3;
+naruto.resizey= 0.5;
+naruto.fpsfactor = 2;
+
+
+valleyofend.setup(ctx, canvas);
+
+let fps, fpsInterval, startTime , now, then, elapsed;
+const control = new animationControl();
+
+function startAnimating(fps){
+    
+    control.fps = fps;
+    control.fpsInterval=1000/control.fps;
+    control.then= Date.now();
+    control.startTime=control.then;
+    animate();
+
+}
+let count=0;
+
 
 function animate(){
     //track.play();
     requestAnimationFrame(animate);
-    now =Date.now();
-    elapsed=now-then;
-    if(elapsed> fpsInterval){
-        then=now-(elapsed%fpsInterval);        
-        ctx.drawImage(sprite,0,0,canvas.width,canvas.height);
+    control.now =Date.now();
+    
+    if(control.getelapsed() > control.fpsInterval){
+        control.then=control.now-(control.elapsed%control.fpsInterval);
         
-        sasuke.draw();
+        valleyofend.draw(control.currentFrame);
+        //naruto.draw(control.currentFrame);
+        //sasuke.draw(control.currentFrame);
+        control.atualize();
+        control.print();
         requestAnimationFrame(animate);
         
     }
 }
 
+
+
 function start(){
-    startAnimating(25);    
+    startAnimating(10);    
 }
 
 start();
