@@ -7,6 +7,8 @@ const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+
 /*
 const scenario = new Layer(ctx, window, canvas);
 /*
@@ -37,7 +39,7 @@ scenario.add(sasuke);
 sasuke.addspecial(fireball);
 //scenario.add(fireball);
 */
-
+/*
 const sprite = new Image();
 sprite.src = "idle1.png";
 
@@ -48,18 +50,30 @@ sasuke.src = "idle1.png";
 sasuke.resizex= 0.3;
 sasuke.resizey= 0.5;
 
-const naruto = new drawableObj();
-naruto.setctx(ctx);
-naruto.setcanvas(canvas);
-naruto.src = "idle2.png";
-naruto.posx = 0.4;
-naruto.posy = 0.4;
-naruto.resizex= 0.3;
-naruto.resizey= 0.5;
-naruto.fpsfactor = 2;
+*/
 
 
 valleyofend.setup(ctx, canvas);
+city.setup(ctx, canvas);
+naruto.sprite.setctx(ctx);
+naruto.sprite.setcanvas(canvas);
+
+
+
+window.addEventListener("keyup",function(e){
+    delete naruto.keys[e.code[3]];
+    //state="idle";
+    
+
+});
+
+window.addEventListener("keydown",function(e){
+    naruto.keys[e.code.toString()[3]]=true;    
+    }
+);  
+
+
+
 
 let fps, fpsInterval, startTime , now, then, elapsed;
 const control = new animationControl();
@@ -85,7 +99,8 @@ function animate(){
         control.then=control.now-(control.elapsed%control.fpsInterval);
         
         valleyofend.draw(control.currentFrame);
-        //naruto.draw(control.currentFrame);
+        //city.draw(control.currentFrame);
+        naruto.draw(control.currentFrame);
         //sasuke.draw(control.currentFrame);
         control.atualize();
         control.print();
@@ -97,7 +112,7 @@ function animate(){
 
 
 function start(){
-    startAnimating(10);    
+    startAnimating(5);    
 }
 
 start();

@@ -1,32 +1,49 @@
-const valleyofend1 = new drawableObj();
+const backgroundarray = new Array();
 
+const valleyofend1 = new drawableObj();
 valleyofend1.src = "image/background/valleyofend/waterfall1.png";
 valleyofend1.posx=0;
 valleyofend1.posy=0;
 valleyofend1.resizex=1;
 valleyofend1.resizey=1;
-
 const valleyofend2 = new drawableObj();
-
 valleyofend2.src = "image/background/valleyofend/waterfall2.png";
 valleyofend2.posx=0;
 valleyofend2.posy=0;
 valleyofend2.resizex=1;
 valleyofend2.resizey=1;
-
 const valleyofend3 = new drawableObj();
-
 valleyofend3.src = "image/background/valleyofend/waterfall3.png";
 valleyofend3.posx=0;
 valleyofend3.posy=0;
 valleyofend3.resizex=1;
 valleyofend3.resizey=1;
-
-
-const arr = new Array(valleyofend1,valleyofend2,valleyofend3);
-
+const valleyofendarr = new Array(valleyofend1,valleyofend2,valleyofend3);
 const valleyofend = new Background();
-valleyofend.imageset = arr;
-
-const backgroundarray = new Array();
+valleyofend.imageset = valleyofendarr;
+valleyofend.name = "valley of end";
 backgroundarray.push(valleyofend);
+
+const city1 = new drawableObj();
+city1.src="image/background/city/city1.png";
+city1.posx =0;
+city1.posy =0;
+city1.resizex =1;
+city1.resizey =1;
+const city2 = new drawableObj();
+city2.src="image/background/city/city2.png";
+city2.posx =0;
+city2.posy =0;
+city2.resizex =1;
+city2.resizey =1;
+const city3 = new drawableObj();
+city3.src="image/background/city/city3.png";
+city3.posx =0;
+city3.posy =0;
+city3.resizex =1;
+city3.resizey =1;
+const city = new Background();
+const cityarr = new Array(city1,city2,city3);
+city.name = "city";
+city.imageset = cityarr;
+backgroundarray.push(city);

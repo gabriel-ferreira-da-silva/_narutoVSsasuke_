@@ -1,10 +1,11 @@
 class Background{
     constructor(){
 
-        this.imageset=[];
+        this.imageset=new Array();
 
          // identificação
          this.type="background";
+         this.name="";
 
          // parametros da tela 
          this.canvas;
@@ -26,11 +27,13 @@ class Background{
             
         }
     }
+    
     draw(currentFrame){
-        
+        console.log(this.currframe);
         this.imageset[this.currframe++].draw(currentFrame);
         if(this.currframe == this.imageset.length ){
-            this.currframe=0;;
+            this.currframe=0;
+            
         }
         
     }
