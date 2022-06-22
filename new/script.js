@@ -1,63 +1,23 @@
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
-
 //canvas.width= 2400;
 //canvas.height= 2000;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+valleyofend.setup(ctx, canvas, valleyofend.imageset );
+valleyofend.setfpsfactor(1);
 
-/*
-const scenario = new Layer(ctx, window, canvas);
-/*
-const sasuke = new Character(scenario.ctx,scenario.window, scenario.canvas.width, scenario.canvas.height);
-sasuke.CurrSprite ="Sprites/sasuke/running/running1.png";
-sasuke.setFrame();
-
-const fireball = new Special(scenario.ctx,scenario.window, scenario.canvas.width, scenario.canvas.height,sasuke);
-const srcarry= new Array("special/fireball/fireball1.png","special/fireball/fireball2.png","special/fireball/fireball3.png");
-fireball.setimages(srcarry);
-
-sasuke.special = fireball;
-sasuke.basesrc = "sasuke";
-
-const valleyofend = new Background(scenario.ctx,scenario.window, scenario.canvas.width, scenario.canvas.height);
-valleyofend.maxframe =2;
-const sourcesarray = new Array("sprites/waterfall1.png","sprites/waterfall2.png","sprites/waterfall3.png");
-valleyofend.setimages(sourcesarray);
-sasuke.layer=scenario;
-*/
-/*
-valleyofend.ctx = scenario.ctx;
-*/
-/*
-scenario.add(valleyofend);
-sasuke.setgrounds(valleyofend.grounds);
-scenario.add(sasuke);
-sasuke.addspecial(fireball);
-//scenario.add(fireball);
-*/
-/*
-const sprite = new Image();
-sprite.src = "idle1.png";
-
-const sasuke = new drawableObj();
-sasuke.ctx = ctx;
-sasuke.canvas = canvas;
-sasuke.src = "idle1.png";
-sasuke.resizex= 0.3;
-sasuke.resizey= 0.5;
-
-*/
-
-
-valleyofend.setup(ctx, canvas);
-city.setup(ctx, canvas);
+city.setup(ctx, canvas, city.imageset);
 naruto.sprite.setctx(ctx);
 naruto.sprite.setcanvas(canvas);
 
+
+const gamescreen = new GameScreenHandler(ctx, canvas, window);
+gamescreen.add(valleyofend);
+gamescreen.add(naruto);
 
 
 window.addEventListener("keyup",function(e){
@@ -75,7 +35,7 @@ window.addEventListener("keydown",function(e){
 
 
 
-let fps, fpsInterval, startTime , now, then, elapsed;
+
 const control = new animationControl();
 
 function startAnimating(fps){
@@ -98,9 +58,11 @@ function animate(){
     if(control.getelapsed() > control.fpsInterval){
         control.then=control.now-(control.elapsed%control.fpsInterval);
         
-        valleyofend.draw(control.currentFrame);
-        //city.draw(control.currentFrame);
-        naruto.draw(control.currentFrame);
+
+        gamescreen.draw( control.currentFrame );
+        //valleyofend.draw(control.currentFrame,"normal");
+        //city.draw(control.currentFrame,"parallax");
+        //naruto.draw(control.currentFrame);
         //sasuke.draw(control.currentFrame);
         control.atualize();
         control.print();
@@ -112,44 +74,7 @@ function animate(){
 
 
 function start(){
-    startAnimating(5);    
+    startAnimating(10);    
 }
 
 start();
-
-
-/*
-function animate(){
-
-   
-        ctx.drawImage(waterfall[waterfallFrame],0,0,canvas.width,canvas.height);
-        sasuke.draw();
-        if(waterfallFrame<2) waterfallFrame++ 
-        else waterfallFrame=0;
-
-        requestAnimationFrame(animate);
-        
-    
-}        
-
-
-
-let fps, fpsInterval, startTime , now, then, elapsed;
-
-function startAnimating(fps){
-    
-    fpsInterval=1000/fps;
-    then= Date.now();
-    startTime=then;
-    animate();
-
-}
-
-startAnimating(10);
-*/
-
-
-
-
-
-

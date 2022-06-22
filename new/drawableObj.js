@@ -7,6 +7,7 @@ class drawableObj extends Image{
         this.type="";
 
         // parametros da tela 
+        this.window;
         this.canvas;
         this.ctx;
 

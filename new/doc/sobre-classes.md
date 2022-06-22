@@ -1,4 +1,4 @@
-# documentação/diario
+# documentação/diario -  sobre classes
 
 # introducao
 
@@ -18,7 +18,14 @@ editar e excluir qualquer parte sem prejudicar o tudo. a classe mais basica de t
 
 ela herda da classe Image() e vai servir para sustentar todas as outras figuras, imagens e sprites. 
 define as caracteristicas mais basicas para se desenhar na tela, posição, formmato , tamanho e mais
-algumas informaçãoes que serão usadas pelas classes filhas dela.
+algumas informaçãoes que serão usadas para desenhar algo na tela
+
+
+##  classe ScreenWidget() - iniciado / incompleto /
+
+
+essa classe é a base de todos os outros objetos do jogo como character background special e etc... que serão herdeiras dela. ela contem metodos e funções importantes para comunicar-se como a classe GameScreenHandler().
+
 
 
 ## classe animationControl() - incompleto/funcional
@@ -49,6 +56,6 @@ background tem uma lista de drawableObject() q podem ser controladas independent
 # controles avançados
 
 
-## screenHandler - não iniciado
+## GameScreenHandler() - não iniciado
 
 talves essa seja a classe mais importante. ela vai controlar todas as outras classes e objetos que aparecem ou não na tela. controlar colisões, personagens e impressão de cada imagem será o trabalho dessa classe.

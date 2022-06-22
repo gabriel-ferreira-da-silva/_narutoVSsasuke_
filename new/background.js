@@ -1,5 +1,7 @@
-class Background{
+class Background extends ScreenWidget{
     constructor(){
+
+        super();
 
         this.imageset=new Array();
 
@@ -7,18 +9,16 @@ class Background{
          this.type="background";
          this.name="";
 
-         // parametros da tela 
-         this.canvas;
-         this.ctx;
  
          // controle de tempo e frame
          this.layer=0;
-
+        //
+        this.option = "normal";
          //controle de frames do background;
          this.currframe=0;
     }
 
-    setup(ctx, canvas){
+    setup1(ctx, canvas){
         this.ctx =ctx;
         this.canvas =canvas;
         for(let i=0; i < this.imageset.length ; i++ ){
@@ -27,14 +27,28 @@ class Background{
             
         }
     }
-    
-    draw(currentFrame){
-        console.log(this.currframe);
-        this.imageset[this.currframe++].draw(currentFrame);
-        if(this.currframe == this.imageset.length ){
-            this.currframe=0;
+
+    setfpsfactor(fpsfactor){
+        for(let i=0; i < this.imageset.length ; i++ ){
+            this.imageset[i].fpsfactor = fpsfactor;
             
         }
+    }
+    
+    draw(currentFrame){
+
+        if(this.option == "parallax"){
+            for(let i = 0; i < this.imageset.length ; i++){
+                this.imageset[i].draw(currentFrame);
+            }
+        }else{
+            console.log(this.currframe);
+            this.imageset[this.currframe++].draw(currentFrame);
+            if(this.currframe == this.imageset.length ){
+            this.currframe=0;    
+        }
+        }
+        
         
     }
 }

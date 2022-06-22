@@ -1,6 +1,7 @@
-class Character {
+class Character extends ScreenWidget{
     constructor(){
-       
+        super();
+
         // identificação
         this.type ="character";
         this.name =""; 
@@ -21,7 +22,15 @@ class Character {
         this.state="";
 
     }
+    /*
+    setup(ctx, canvas){
+        this.canvas=canvas;
+        this.ctx = ctx;
 
+        this.sprite.ctx=ctx;
+        this.sprite.canvas=canvas;
+    }
+*/
     draw(currentFrame){
         this.getmove();
 
