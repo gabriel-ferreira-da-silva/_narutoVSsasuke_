@@ -37,14 +37,14 @@ guarda algumas variaveis para controle da animação.
 # sprites
 
 
-## character() - iniciado / incompleto /não funcional
+## character() - iniciado / incompleto / funcional
 
 o character() é a classe que será o que o jogodar controlará. certametne sera a que mais recebe e manda informações. e a que mais vai fazer tudo crashar o tempo inteiro. fiquei na duvida se ela seria uma filah de drawableObj ou se assim como background um invelocro que seria responsavel por comunicar a sprite com todo os outros elementos da tela.
 
 ## special() - não iniciado
 
 
-## background() - iniciado/incompleto/não funcional
+## background() - iniciado/incompleto/ funcional
 
 o controle do background é a razão pela qual eu tive de refazer esse projeto pela 3 vez. uma boa classe background deve permitir o controle dos frames, ter um chão onde os personagems possam se
 sustentar. ao mesmo tempo q um background mais simples é muito facil de se fazer e trabalhar qualquer 
@@ -54,6 +54,6 @@ os personagens antes de ter um bom background e isso é um erro.
 background tem uma lista de drawableObject() q podem ser controladas independentemente.posso implementar efeitos paralax mais facilmente. todas as classes que criarei terão um metodo draw proprio.
 
 
-## GameScreenHandler() - iniciado
+## GameScreenHandler() - iniciado / funcional
 
 talves essa seja a classe mais importante. ela vai controlar todas as outras classes e objetos que aparecem ou não na tela. controlar colisões, personagens e impressão de cada imagem será o trabalho dessa classe.
