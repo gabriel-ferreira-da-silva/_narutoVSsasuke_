@@ -1,3 +1,12 @@
+class Line{
+    constructor(startx, starty,endx,endy ){
+        this.startx = startx;
+        this.starty = starty;
+        this.endx   = endx;
+        this.endy   = endy;
+    }
+}
+
 class Background extends ScreenWidget{
     constructor(){
 
@@ -5,17 +14,20 @@ class Background extends ScreenWidget{
 
         this.imageset=new Array();
 
-         // identificação
-         this.type="background";
-         this.name="";
+        // identificação
+        this.type="background";
+        this.name="";
 
  
-         // controle de tempo e frame
-         this.layer=0;
+        // controle de tempo e frame
+        this.layer=0;
         //
         this.option = "normal";
-         //controle de frames do background;
-         this.currframe=0;
+        //
+        this.ground=[];        
+        //controle de frames do background;
+        this.currframe=0;
+
     }
 
     setup1(ctx, canvas){

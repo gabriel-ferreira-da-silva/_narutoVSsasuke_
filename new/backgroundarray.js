@@ -1,5 +1,5 @@
 const backgroundarray = new Array();
-
+//definindo imagens
 const valleyofend1 = new drawableObj();
 valleyofend1.src = "image/background/valleyofend/waterfall1.png";
 valleyofend1.posx=0;
@@ -19,10 +19,18 @@ valleyofend3.posy=0;
 valleyofend3.resizex=1;
 valleyofend3.resizey=1;
 const valleyofendarr = new Array(valleyofend1,valleyofend2,valleyofend3);
+//cria e nomeia o background
 const valleyofend = new Background();
 valleyofend.imageset = valleyofendarr;
 valleyofend.name = "valley of end";
+// definindo grounds
+const line1 = new Line(-0.1 ,0.5 ,0.27 ,0.5 );
+const line2 = new Line(0.67 ,0.5 , 1.11 ,0.5 );
+const line3 = new Line(0.25 ,0.6 , 0.7 ,0.6 );
+valleyofend.ground = [line1,line2,line3];
+
 backgroundarray.push(valleyofend);
+
 
 const city1 = new drawableObj();
 city1.src="image/background/city/city1.png";

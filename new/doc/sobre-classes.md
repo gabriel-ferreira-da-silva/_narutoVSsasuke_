@@ -53,9 +53,7 @@ os personagens antes de ter um bom background e isso é um erro.
 
 background tem uma lista de drawableObject() q podem ser controladas independentemente.posso implementar efeitos paralax mais facilmente. todas as classes que criarei terão um metodo draw proprio.
 
-# controles avançados
 
-
-## GameScreenHandler() - não iniciado
+## GameScreenHandler() - iniciado
 
 talves essa seja a classe mais importante. ela vai controlar todas as outras classes e objetos que aparecem ou não na tela. controlar colisões, personagens e impressão de cada imagem será o trabalho dessa classe.

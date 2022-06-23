@@ -1,4 +1,4 @@
-# documentação/diário -  sobre arquivos e classes
+# documentação/diário -  sobre arquivos e pastas
 
 ## pastas
 
