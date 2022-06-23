@@ -63,10 +63,10 @@ class GameScreenHandler{
 
     check_character_ground_colision(ob){
         for(let ground of this.background.ground ){
-            if((ob.posy <= ground.starty && ob.posy + ob.vely > ground.endy) && (ob.posx > ground.startx && ob.posx < ground.endx) ){
+            if((ob.posy <= ground.starty && ob.posy + ob.vely > ground.endy) && (ob.posx > ground.startx && ob.posx < ground.endx)){
                 ob.posy = ground.starty;
                 ob.is_on_ground =true;
-                ob.block_state_keys.delete("f");
+                ob.block_state_keys.delete("falling");
                 return false;
             }
             
