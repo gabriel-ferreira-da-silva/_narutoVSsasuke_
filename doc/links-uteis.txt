@@ -1,0 +1,11 @@
+
+***  link para documentação do server feito em python
+https://docs.python.org/3/library/http.server.html#module-http.server
+
+***  ling para documentação do socketserver do python
+https://docs.python.org/3/library/socketserver.html#module-socketserver
+
+
+*** ESSE TUTORIAL PARECE EXCELENTE DEMAIS
+
+https://www.bogotobogo.com/python/python_network_programming_server_client.php
