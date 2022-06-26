@@ -1,3 +1,18 @@
+**********************************************************************
+COISAS DE NODE.JS
+**********************************************************************
+
+*** TO PENSANDO EM USAR NODE.JS AO INVES DE SOCKET PYTHON. ESSE TUTORIAL PARECE BOM.
+https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module
+
+
+
+
+
+
+**********************************************************************
+COISAS DE PYTHON SOCKET
+**********************************************************************
 
 ***  link para documentação do server feito em python
 https://docs.python.org/3/library/http.server.html#module-http.server
@@ -5,7 +20,5 @@ https://docs.python.org/3/library/http.server.html#module-http.server
 ***  ling para documentação do socketserver do python
 https://docs.python.org/3/library/socketserver.html#module-socketserver
 
-
 *** ESSE TUTORIAL PARECE EXCELENTE DEMAIS
-
 https://www.bogotobogo.com/python/python_network_programming_server_client.php
