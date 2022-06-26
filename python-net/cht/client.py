@@ -37,10 +37,10 @@ def chat_client():
                 data = sock.recv(4096)
                 if not data :
                     print ('\nDisconnected from chat server')
-                    sys.exit()
+                    #sys.exit()
                 else :
                     #print data
-                    sys.stdout.write(data)
+                    sys.stdout.write(data.decode())
                     sys.stdout.write('[Me] '); sys.stdout.flush()     
             
             else :
