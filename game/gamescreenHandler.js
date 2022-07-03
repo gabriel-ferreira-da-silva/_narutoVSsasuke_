@@ -1,3 +1,5 @@
+const { send } = require("process");
+
 class GameScreenHandler{
     constructor(ctx, canvas, window){
         this.ctx= ctx;
@@ -45,9 +47,13 @@ class GameScreenHandler{
                 if(this.check_character_ground_colision(ob)){
                     ob.posy+=ob.vely;
                 }
+                send_keys( ob.keys );
             }
+            
             ob.draw(currentFrame);
         }
+
+        
         /*
         this.object.forEach (function(ob) {
             if(ob.type=="character"){
